@@ -37,9 +37,13 @@ create sequence SecureSocialuser_seq;
 
 # --- !Downs
 
-drop table if exists persistable_token cascade;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists SecureSocialuser cascade;
+drop table if exists persistable_token;
+
+drop table if exists SecureSocialuser;
+
+SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists persistable_token_seq;
 

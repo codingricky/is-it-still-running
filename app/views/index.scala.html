@@ -1,7 +1,15 @@
-@(message: String)
+@main("Is it still running?") {
 
-@main("Welcome to Play") {
+    <div class="well" style="padding-top: 70px;">
 
-    @play20.welcome(message, style = "Java")
+        <div class="container" ng-app="app" ng-controller="mainController">
+            <form class="form-group">
+                <div class="form-group">
+                    <input id="search" type="text" placeholder="http://www.google.com" class="form-control" ng-required required ng-model="url"/>
+                </div>
+                <button id="search-button" type="submit" class="btn btn-default" ng-click="check();">Check</button>
+            </form>
+        </div>
+    </div>
 
 }

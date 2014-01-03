@@ -18,9 +18,19 @@ public class AcceptanceTest {
     public void login() {
         runTest(new Callback<TestBrowser>() {
             public void invoke(TestBrowser browser) {
-                browser.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
                 createUserAndLogin(browser);
+            }
+        });
+    }
 
+    @Test
+    public void checkSiteIsUp() {
+        runTest(new Callback<TestBrowser>() {
+            public void invoke(TestBrowser browser) {
+                browser.goTo(LOCALHOST);
+                browser.fill("#search").with("http://www.bing.com");
+                browser.$("#search-button").click();
+                browser.await().atMost(5, TimeUnit.SECONDS).until(".message").containsText("200 returned, site is up");
             }
         });
     }
@@ -45,7 +55,7 @@ public class AcceptanceTest {
         browser.fill("#password_password2").with("password");
         browser.find("button", withText("Create Account")).click();
 
-        browser.$(".alert").contains("You can log in now");
+        browser.await().atMost(5, TimeUnit.SECONDS).until(".alert").containsText("You can log in now");
         browser.fill("#username").with("testing@testing.com");
         browser.fill("#password").with("password");
         browser.find("button", withText("Login")).click();

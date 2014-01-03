@@ -1,0 +1,12 @@
+.first-content {
+    padding-top:100px;
+}
+
+.spinner {
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    margin-left: 250px;
+}
+
+.nav, .pagination, .carousel a { cursor: pointer; }

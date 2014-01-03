@@ -13,11 +13,19 @@ import static play.libs.F.Promise;
 public class CheckController extends Controller {
 
     public static Promise<Result> check() {
+
         JsonNode json = request().body().asJson();
         String url = json.get("url").asText();
         final Promise<Result> resultPromise = WS.url(url).get().map(
                 new Function<WS.Response, Result>() {
                     public Result apply(play.libs.WS.Response response) {
+
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                         int status = response.getStatus();
                         ObjectNode result = Json.newObject();
                         result.put("status", status);

@@ -1,3 +1,3 @@
 "use strict";
 
-angular.module('app', ['ngResource', 'ngRoute', 'app.services', 'app.controllers']);
+angular.module('app', ['ngResource', 'ngRoute', 'ui.bootstrap', 'app.services', 'app.controllers', 'angularSpinner']);
